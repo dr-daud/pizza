@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/normalize';
 
 .pizza-block {
     width: 280px;
@@ -41,7 +42,7 @@
                 cursor: pointer;
                 font-weight: 600;
                 font-size: 14px;
-                // @include noselect();
+                @include noselect();
 
                 &.active {
                     background: #ffffff;
