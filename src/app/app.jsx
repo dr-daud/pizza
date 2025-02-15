@@ -1,20 +1,14 @@
-import { useState, useEffect } from 'react';
+import { Routes, Route } from "react-router";
 
 import Header from '../components/header/header';
 import Categories from '../components/categories/categories';
 import Sort from '../components/sort/sort';
-import PizzaBlock from '../components/pizza-block/pizza-block';
+import Home from '../pages/home'
+import NotFound from '../pages/not-found';
 
 import './app.scss'
 
 function App() {
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        fetch('https://67af4195dffcd88a6786195f.mockapi.io/items')
-            .then(res => res.json())
-            .then(json => setItems(json))
-    }, [])
 
     return (
         <div className="wrapper">
@@ -26,11 +20,10 @@ function App() {
                         <Sort />
                     </div>
                     <h2 className="content__title">Все пиццы</h2>
-                    <div className="content__items">
-                        {items.map(obj => (
-                            <PizzaBlock key={obj.id} {...obj} />
-                        ))}
-                    </div>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='*' element={<NotFound />} />
+                    </Routes>
                 </div>
             </div>
         </div>
