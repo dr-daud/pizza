@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useSelector } from 'react-redux';
 
 import PizzaBlock from '../components/pizza-block/pizza-block';
 import Skeleton from '../components/skeleton/skeleton';
@@ -10,18 +11,19 @@ import { SearchContext } from '../app/app';
 const Home = () => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [categoryId, setCategoryId] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
-    const [sortType, setSortType] = useState({ name: 'популярности', sortProperty: 'rating' });
     const { searchValue } = useContext(SearchContext);
+
+    const categoryId = useSelector(state => state.filter.categoryId);
+    const sort = useSelector(state => state.filter.sort)
 
     useEffect(() => {
         setIsLoading(true)
 
-        const sortBy = sortType.sortProperty.replace('-', '');
-        const order = sortType.sortProperty.includes('-') ? 'desc' : 'asc';
+        const sortBy = sort.sortProperty.replace('-', '');
+        const order = sort.sortProperty.includes('-') ? 'desc' : 'asc';
         const category = categoryId > 0 ? `category=${categoryId}` : '';
-        const search = searchValue ? `&search=${searchValue}` : ''
+        const search = searchValue ? `&search=${searchValue}` : '';
 
         fetch(`https://67af4195dffcd88a6786195f.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`)
             .then(res => res.json())
@@ -30,13 +32,13 @@ const Home = () => {
                 setIsLoading(false)
             })
         window.scrollTo(0, 0)
-    }, [categoryId, sortType, searchValue, currentPage])
+    }, [categoryId, sort, searchValue, currentPage])
 
     return (
         <div className="container">
             <div className="content__top">
-                <Categories value={categoryId} onClickCategory={(id) => setCategoryId(id)} />
-                <Sort value={sortType} onClickSort={(obj) => setSortType(obj)} />
+                <Categories />
+                <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">

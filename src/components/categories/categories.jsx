@@ -1,13 +1,20 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategoryId } from '../../redux/slices/filterSlice';
+
 import './categories.scss';
 
-const Categories = ({ value, onClickCategory }) => {
+const Categories = () => {
     const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+
+    const dispatch = useDispatch();
+    const categoryId = useSelector(state => state.filter.categoryId);
+
 
     return (
         <div className="categories">
             <ul>
                 {categories.map((item, i) => (
-                    <li key={i} onClick={() => onClickCategory(i)} className={value === i ? 'active' : ''}>{item}</li>
+                    <li key={i} onClick={() => dispatch(setCategoryId(i))} className={categoryId === i ? 'active' : ''}>{item}</li>
                 ))}
             </ul>
         </div>
