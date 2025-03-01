@@ -14,12 +14,14 @@
     "axios": "^1.8.1",
     "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",
+    "qs": "^6.14.0",
     "react": "^19.0.0",
     "react-content-loader": "^7.0.2",
     "react-dom": "^19.0.0",
     "react-paginate": "^8.3.0",
     "react-redux": "^9.2.0",
-    "react-router": "^7.1.5"
+    "react-router": "^7.1.5",
+    "react-router-dom": "^7.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
