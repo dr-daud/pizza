@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import CartItem from '../components/cart-item/cart-item';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearItems } from '../redux/slices/cartSlice';
+import NotFoundBlock from '../components/not-found-block/not-found-block';
 
 const Cart = () => {
     const { items, totalPrice } = useSelector(state => state.cart)
@@ -10,6 +11,10 @@ const Cart = () => {
 
     const clearCart = () => {
         dispatch(clearItems())
+    }
+
+    if (!totalPrice) {
+        return <NotFoundBlock />
     }
 
     return (
