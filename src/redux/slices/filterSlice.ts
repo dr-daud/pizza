@@ -1,4 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+
+type TSort = {
+    name: string,
+    sortProperty: 'rating' | 'price' | 'title' | '-rating' | '-price' | '-title'
+}
+
+interface IState {
+    categoryId: number,
+    currentPage: number,
+    searchValue: string,
+    sort : TSort
+}
 
 const initialState = {
     categoryId: 0,

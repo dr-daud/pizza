@@ -4,7 +4,16 @@ import { addItem } from '../../redux/slices/cartSlice';
 
 import './pizza-block.scss';
 
-const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
+type PizzaBlockProps = {
+    id: number,
+    imageUrl: string,
+    title: string,
+    sizes: number[],
+    types: string[],
+    price: number,
+}
+
+const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }: PizzaBlockProps) => {
     const [activeSize, setActiveSize] = useState(0);
     const [activeType, setActiveType] = useState(0);
     const pizzaTypes = ['тонкое', 'традиционное'];

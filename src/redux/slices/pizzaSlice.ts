@@ -7,6 +7,21 @@ export const fetchPizzas = createAsyncThunk('pizzas/fetchPizzasStatus', async (p
     return data
 })
 
+interface IItems {
+    id: number,
+    imageUrl: string,
+    title: string,
+    price: number,
+    size: number,
+    type: string,
+    count: number
+}
+
+interface IState {
+    items:IItems[],
+    status: 'loading' | 'error' | 'success'
+}
+
 const initialState = {
     items: [],
     status: 'loading'

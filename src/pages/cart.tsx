@@ -7,7 +7,7 @@ import NotFoundBlock from "../components/not-found-block/not-found-block";
 const Cart = () => {
 	const { items, totalPrice } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
-	let totalCount = items.reduce((sum, item) => sum + item.count, 0);
+	let totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
 
 	const clearCart = () => {
 		dispatch(clearItems());
