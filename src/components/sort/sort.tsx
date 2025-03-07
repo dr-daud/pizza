@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
+import { RootState } from "../../redux/store";
 
 import "./sort.scss";
 
@@ -21,7 +22,7 @@ export const list: ListType[] = [
 const Sort = () => {
 	const [isActive, setIsActive] = useState(false);
 	const dispatch = useDispatch();
-	const sort = useSelector((state) => state.filter.sort);
+	const sort = useSelector((state: RootState) => state.filter.sort);
 
 	const sortRef = useRef<HTMLDivElement>(null);
 

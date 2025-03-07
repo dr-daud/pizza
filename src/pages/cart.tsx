@@ -3,9 +3,10 @@ import CartItem from "../components/cart-item/cart-item";
 import { useSelector, useDispatch } from "react-redux";
 import { clearItems } from "../redux/slices/cartSlice";
 import NotFoundBlock from "../components/not-found-block/not-found-block";
+import { RootState } from "../redux/store";
 
 const Cart = () => {
-	const { items, totalPrice } = useSelector((state) => state.cart);
+	const { items, totalPrice } = useSelector((state: RootState) => state.cart);
 	const dispatch = useDispatch();
 	let totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
 

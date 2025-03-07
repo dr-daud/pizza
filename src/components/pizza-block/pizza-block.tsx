@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../redux/slices/cartSlice';
+import { RootState } from '../../redux/store';
 
 import './pizza-block.scss';
 
@@ -19,7 +20,7 @@ const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }: PizzaBlockProp
     const pizzaTypes = ['тонкое', 'традиционное'];
 
     const dispatch = useDispatch();
-    const cartItem = useSelector(state => state.cart.items.find(obj => obj.id === id));
+    const cartItem = useSelector((state: RootState) => state.cart.items.find(obj => obj.id === id));
 
     const addedCount = cartItem ? cartItem.count : 0;
 
@@ -31,6 +32,7 @@ const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }: PizzaBlockProp
             price,
             size: sizes[activeSize],
             type: pizzaTypes[activeType],
+            count: 0
         }
         dispatch(addItem(obj))
     }
