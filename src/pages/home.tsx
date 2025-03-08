@@ -14,7 +14,7 @@ import {
 	setCurrentPage,
 	setFilters,
 } from "../redux/slices/filterSlice";
-import { fetchPizzas, setItems } from "../redux/slices/pizzaSlice";
+import { fetchPizzas } from "../redux/slices/pizzaSlice";
 import { list } from "../components/sort/sort";
 
 const Home = () => {
@@ -68,7 +68,8 @@ const Home = () => {
 			dispatch(
 				setFilters({
 					...params,
-					sort,
+                    // @ts-ignore
+					sort!
 				})
 			);
 			isSearch.current = true;

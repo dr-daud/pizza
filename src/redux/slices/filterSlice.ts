@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type TSort = {
 	name: string;
 	sortProperty: string;
-};
+} ;
 
 interface IState {
 	categoryId: number;

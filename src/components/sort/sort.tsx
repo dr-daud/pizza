@@ -3,14 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
 import { RootState } from "../../redux/store";
 
+import { TSort } from "../../redux/slices/filterSlice";
+
 import "./sort.scss";
 
-type ListType = {
-	name: string;
-	sortProperty: string;
-};
+// type ListType = {
+// 	name: string;
+// 	sortProperty: string;
+// };
 
-export const list: ListType[] = [
+export const list: TSort[] = [
 	{ name: "популярности (DESC)", sortProperty: "-rating" },
 	{ name: "популярности (ASC)", sortProperty: "rating" },
 	{ name: "цене (DESC)", sortProperty: "-price" },
@@ -26,7 +28,7 @@ const Sort = () => {
 
 	const sortRef = useRef<HTMLDivElement>(null);
 
-	const onClickList = (obj: ListType) => {
+	const onClickList = (obj: TSort) => {
 		dispatch(setSort(obj));
 		setIsActive(false);
 	};
